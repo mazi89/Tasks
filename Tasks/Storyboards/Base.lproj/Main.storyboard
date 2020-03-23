@@ -10,13 +10,13 @@
         <!--Tasks-->
         <scene sceneID="zaC-LF-Ryy">
             <objects>
-                <tableViewController id="MWh-GK-Ys6" sceneMemberID="viewController">
+                <tableViewController id="MWh-GK-Ys6" customClass="TasksTableViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HaJ-YV-FZ1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KNI-BP-Oow">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KNI-BP-Oow" customClass="TaskTableViewCell" customModule="Tasks" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KNI-BP-Oow" id="6fz-Ek-Ox9">
@@ -67,7 +67,7 @@
         <!--Create Task-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CreateTaskViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,6 +96,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="Kba-wV-qbU"/>
                                                 </constraints>
                                                 <state key="normal" image="circle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="toggleComplete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g0h-cQ-AnS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -137,9 +140,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Task" id="8dY-IZ-g9h">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jl1-XK-TgA"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mDE-BS-MRN"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jl1-XK-TgA">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="SlV-a2-Nao"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mDE-BS-MRN">
+                            <connections>
+                                <action selector="save:" destination="BYZ-38-t0r" id="uG8-fW-l6w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="efJ-Ae-ffg" id="fvw-Ym-wud"/>
+                        <outlet property="notesTextView" destination="nJo-SM-6BA" id="thC-am-6kc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
