@@ -13,6 +13,7 @@ class TasksTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    // WARNING: DO NOT DO THIS IN PRODUCTION! This is very inefficient.
     var tasks: [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         let context = CoreDataStack.shared.mainContext
