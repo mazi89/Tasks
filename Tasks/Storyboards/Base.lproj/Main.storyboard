@@ -97,12 +97,12 @@
                                 <rect key="frame" x="20" y="108" width="374" height="358.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efJ-Ae-ffg">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVH-pK-z2h">
-                                        <rect key="frame" x="0.0" y="75" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="44" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1u-ZM-n2r">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="30"/>
@@ -123,8 +123,17 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="K0y-b2-dSN">
+                                        <rect key="frame" x="0.0" y="94" width="374" height="32"/>
+                                        <segments>
+                                            <segment title="Low"/>
+                                            <segment title="Normal"/>
+                                            <segment title="High"/>
+                                            <segment title="Critical"/>
+                                        </segments>
+                                    </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ydi-PM-JR2">
-                                        <rect key="frame" x="0.0" y="125" width="374" height="233.5"/>
+                                        <rect key="frame" x="0.0" y="145" width="374" height="213.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKz-bg-HEw">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
@@ -140,7 +149,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nJo-SM-6BA">
-                                                <rect key="frame" x="0.0" y="32.5" width="374" height="201"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="374" height="181"/>
                                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -175,6 +184,7 @@
                     <connections>
                         <outlet property="nameTextField" destination="efJ-Ae-ffg" id="fvw-Ym-wud"/>
                         <outlet property="notesTextView" destination="nJo-SM-6BA" id="thC-am-6kc"/>
+                        <outlet property="priorityControl" destination="K0y-b2-dSN" id="uDh-sz-wsW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
