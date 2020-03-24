@@ -29,6 +29,9 @@
                                                 <constraint firstAttribute="width" secondItem="K5A-3f-6I1" secondAttribute="height" multiplier="1:1" id="19y-Eq-QLQ"/>
                                             </constraints>
                                             <state key="normal" image="circle" catalog="system"/>
+                                            <connections>
+                                                <action selector="toggleComplete:" destination="KNI-BP-Oow" eventType="touchUpInside" id="nE6-lM-Xlu"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwg-jt-UMf">
                                             <rect key="frame" x="58" y="11.5" width="73" height="20.5"/>

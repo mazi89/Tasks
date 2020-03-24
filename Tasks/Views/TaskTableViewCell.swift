@@ -23,6 +23,21 @@ class TaskTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func toggleComplete(_ sender: UIButton) {
+        guard let task = task else { return }
+        
+        task.complete.toggle()
+        sender.setImage(task.complete ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
+        
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error saving moc (changing complete state): \(error)")
+        }
+    }
+    
     // MARK: - Private
 
     private func updateViews() {
