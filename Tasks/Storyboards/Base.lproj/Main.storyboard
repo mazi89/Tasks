@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KNI-BP-Oow" customClass="TaskTableViewCell" customModule="Tasks" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TaskCell" id="KNI-BP-Oow" customClass="TaskTableViewCell" customModule="Tasks" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KNI-BP-Oow" id="6fz-Ek-Ox9">
@@ -45,6 +45,11 @@
                                         <constraint firstItem="Cwg-jt-UMf" firstAttribute="leading" secondItem="K5A-3f-6I1" secondAttribute="trailing" constant="16" id="x1N-Fi-KkK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completedButton" destination="K5A-3f-6I1" id="fmZ-z0-rLF"/>
+                                    <outlet property="taskTitleLabel" destination="Cwg-jt-UMf" id="SEN-F4-fSt"/>
+                                    <segue destination="pqL-Vo-UAi" kind="show" id="Hem-w6-gBE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -63,6 +68,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKr-6n-Hkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-147.82608695652175" y="550.44642857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7vV-Qf-WSz">
+            <objects>
+                <viewController id="pqL-Vo-UAi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mOF-Ik-Acl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Fmd-Ho-wEs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kWE-To-79P"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqf-O4-hpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="550"/>
         </scene>
         <!--Create Task-->
         <scene sceneID="tne-QT-ifu">

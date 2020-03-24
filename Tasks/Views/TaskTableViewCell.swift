@@ -9,16 +9,26 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var taskTitleLabel: UILabel!
+    @IBOutlet weak var completedButton: UIButton!
+    
+    // MARK: - Properties
+    
+    var task: Task? {
+        didSet {
+            updateViews()
+        }
     }
+    
+    // MARK: - Private
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func updateViews() {
+        guard let task = task else { return }
+        
+        taskTitleLabel.text = task.name
+        completedButton.setImage(task.complete ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
     }
-
 }
