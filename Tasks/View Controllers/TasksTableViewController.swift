@@ -13,6 +13,8 @@ class TasksTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    private let taskController = TaskController()
+    
 //    // WARNING: DO NOT DO THIS IN PRODUCTION! This is very inefficient.
 //    var tasks: [Task] {
 //        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
@@ -91,8 +93,12 @@ class TasksTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "NewTaskModalSegue" {
+            if let navC = segue.destination as? UINavigationController,
+                let detailVC = navC.viewControllers.first as? CreateTaskViewController {
+                detailVC.taskController = taskController
+            }
+        }
     }
 
 }
