@@ -45,6 +45,16 @@ class TasksTableViewController: UITableViewController {
 
     }
     
+    // MARK: - Actions
+    
+    @IBAction func refresh(_ sender: Any) {
+        taskController.fetchTasksFromServer { _ in
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,7 +97,7 @@ class TasksTableViewController: UITableViewController {
                 let context = CoreDataStack.shared.mainContext
                 context.delete(task)
                 do {
-                    try context.save()
+                    try CoreDataStack.shared.save()
                 } catch {
                     context.reset()
                     NSLog("Error saving managed object context (deleting record): \(error)")

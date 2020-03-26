@@ -49,7 +49,7 @@ class CreateTaskViewController: UIViewController {
         let task = Task(name: name, notes: notes, complete: complete, priority: priority, context: CoreDataStack.shared.mainContext)
         taskController?.sendTaskToServer(task: task)
         do {
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
             navigationController?.dismiss(animated: true, completion: nil)
         } catch {
             NSLog("Error saving managed object context: \(error)")

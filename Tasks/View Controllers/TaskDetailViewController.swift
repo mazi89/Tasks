@@ -47,7 +47,7 @@ class TaskDetailViewController: UIViewController {
             task.priority = TaskPriority.allCases[priorityIndex].rawValue
             taskController?.sendTaskToServer(task: task)
             do {
-                try CoreDataStack.shared.mainContext.save()
+                try CoreDataStack.shared.save()
             } catch {
                 NSLog("Error saving managed object context: \(error)")
             }

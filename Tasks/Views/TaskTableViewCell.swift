@@ -32,7 +32,7 @@ class TaskTableViewCell: UITableViewCell {
         sender.setImage(task.complete ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
         
         do {
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
         } catch {
             NSLog("Error saving moc (changing complete state): \(error)")
         }

@@ -38,6 +38,7 @@ class TaskController {
             do {
                 let taskRepresentations = Array(try JSONDecoder().decode([String : TaskRepresentation].self, from: data).values)
                 try self.updateTasks(with: taskRepresentations)
+                completion(nil)
             } catch {
                 NSLog("Error decoding or saving data from Firebase: \(error)")
                 completion(error)
@@ -58,7 +59,7 @@ class TaskController {
             }
             representation.identifier = uuid.uuidString
             task.identifier = uuid
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
             request.httpBody = try JSONEncoder().encode(representation)
         } catch {
             NSLog("Error encoding/saving task: \(error)")
@@ -89,7 +90,9 @@ class TaskController {
         request.httpMethod = "DELETE"
         
         URLSession.shared.dataTask(with: request) { _, _, error in
-            completion(error)
+            DispatchQueue.main.async {
+                completion(error)
+            }
         }.resume()
     }
     
@@ -104,26 +107,28 @@ class TaskController {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
         
-        let context = CoreDataStack.shared.mainContext
+        let context = CoreDataStack.shared.container.newBackgroundContext()
         
-        do {
-            let existingTasks = try context.fetch(fetchRequest)
-            
-            for task in existingTasks {
-                guard let id = task.identifier,
-                    let representation = representationsByID[id] else { continue }
-                self.update(task: task, with: representation)
-                tasksToCreate.removeValue(forKey: id)
+        context.performAndWait {
+            do {
+                let existingTasks = try context.fetch(fetchRequest)
+                
+                for task in existingTasks {
+                    guard let id = task.identifier,
+                        let representation = representationsByID[id] else { continue }
+                    self.update(task: task, with: representation)
+                    tasksToCreate.removeValue(forKey: id)
+                }
+                
+                for representation in tasksToCreate.values {
+                    Task(taskRepresentation: representation, context: context)
+                }
+            } catch {
+                NSLog("Error fetching tasks for UUIDs: \(error)")
             }
-            
-            for representation in tasksToCreate.values {
-                Task(taskRepresentation: representation, context: context)
-            }
-        } catch {
-            NSLog("Error fetching tasks for UUIDs: \(error)")
         }
         
-        try context.save()
+        try CoreDataStack.shared.save(context: context)
     }
     
     private func update(task: Task, with representation: TaskRepresentation) {
