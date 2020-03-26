@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE3D82A7242BB8E000E539B5 /* TaskRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D82A6242BB8E000E539B5 /* TaskRepresentation.swift */; };
 		CE3D82A9242BBA0A00E539B5 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D82A8242BBA0A00E539B5 /* TaskController.swift */; };
+		CE3D82AE242D0F4800E539B5 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D82AD242D0F4800E539B5 /* TaskDetailViewController.swift */; };
 		CEE5138A242916AD00743E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE51389242916AD00743E33 /* AppDelegate.swift */; };
 		CEE5138C242916AD00743E33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE5138B242916AD00743E33 /* SceneDelegate.swift */; };
 		CEE5138E242916AD00743E33 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE5138D242916AD00743E33 /* CreateTaskViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		CE3D82A6242BB8E000E539B5 /* TaskRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepresentation.swift; sourceTree = "<group>"; };
 		CE3D82A8242BBA0A00E539B5 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		CE3D82AD242D0F4800E539B5 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		CEE51386242916AD00743E33 /* Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE51389242916AD00743E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE5138B242916AD00743E33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				CEE5139D2429244000743E33 /* TasksTableViewController.swift */,
 				CEE5138D242916AD00743E33 /* CreateTaskViewController.swift */,
+				CE3D82AD242D0F4800E539B5 /* TaskDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				CE3D82A7242BB8E000E539B5 /* TaskRepresentation.swift in Sources */,
 				CEE513A32429249E00743E33 /* Tasks.xcdatamodeld in Sources */,
 				CEE513A7242924FE00743E33 /* Task+Convenience.swift in Sources */,
+				CE3D82AE242D0F4800E539B5 /* TaskDetailViewController.swift in Sources */,
 				CEE513A02429246600743E33 /* TaskTableViewCell.swift in Sources */,
 				CEE5139E2429244000743E33 /* TasksTableViewController.swift in Sources */,
 				CE3D82A9242BBA0A00E539B5 /* TaskController.swift in Sources */,

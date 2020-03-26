@@ -77,6 +77,24 @@ class TaskController {
         }.resume()
     }
     
+    func deleteTaskFromServer(_ task: Task, completion: @escaping CompletionHandler = { _ in }) {
+        guard let uuid = task.identifier else {
+            completion(NSError())
+            return
+        }
+        
+        let requestURL = baseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            completion(error)
+        }.resume()
+    }
+    
+    // MARK: - Private
+    
     private func updateTasks(with representations: [TaskRepresentation]) throws {
         let tasksByID = representations.filter { $0.identifier != nil }
         let identifiersToFetch = tasksByID.compactMap { UUID(uuidString: $0.identifier!) }

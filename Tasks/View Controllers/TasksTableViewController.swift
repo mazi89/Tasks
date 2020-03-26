@@ -78,13 +78,20 @@ class TasksTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let task = fetchedResultsController.object(at: indexPath)
-            let context = CoreDataStack.shared.mainContext
-            context.delete(task)
-            do {
-                try context.save()
-            } catch {
-                context.reset()
-                NSLog("Error saving managed object context (deleting record): \(error)")
+            taskController.deleteTaskFromServer(task) { error in
+                if let error = error {
+                    NSLog("Task could not be deleted from Firebase: \(error)")
+                    return
+                }
+                
+                let context = CoreDataStack.shared.mainContext
+                context.delete(task)
+                do {
+                    try context.save()
+                } catch {
+                    context.reset()
+                    NSLog("Error saving managed object context (deleting record): \(error)")
+                }
             }
         }
     }
@@ -97,6 +104,13 @@ class TasksTableViewController: UITableViewController {
             if let navC = segue.destination as? UINavigationController,
                 let detailVC = navC.viewControllers.first as? CreateTaskViewController {
                 detailVC.taskController = taskController
+            }
+        } else if segue.identifier == "ShowTaskDetailSegue" {
+            if let detailVC = segue.destination as? TaskDetailViewController {
+                detailVC.taskController = taskController
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    detailVC.task = fetchedResultsController.object(at: indexPath)
+                }
             }
         }
     }
